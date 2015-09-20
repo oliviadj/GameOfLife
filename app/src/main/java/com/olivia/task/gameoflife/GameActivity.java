@@ -14,7 +14,6 @@ public class GameActivity extends Activity implements View.OnTouchListener{
 
 	public static final String TAG = "Board.GameActivity";
 
-	static final int START = 0x000001;
 	GameView gameView;
 	Button buttonPlay;
 	TextView textInstruction;
@@ -145,7 +144,29 @@ public class GameActivity extends Activity implements View.OnTouchListener{
 				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 				break;
 		}
+	}
 
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (playing) {
+			if(thread != null) {
+				Thread pause = thread;
+				thread = null;
+				pause.interrupt();
+			}
+		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (playing) {
+			if(thread == null){
+				thread = new Thread(new GameThread());
+			}
+			thread.start();
+		}
 	}
 
 	// thread inner class
