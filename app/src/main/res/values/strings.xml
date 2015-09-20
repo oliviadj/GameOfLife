@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Game Of Life</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="game_instruction">Game is now playing!\n\nWhile the game is playing :\n\n 1. You will not be able to select/deselect cells\n\n2. You will not be able to change layout orientation\n\nTo stop playing, please click the STOP button</string>
+
+</resources>
