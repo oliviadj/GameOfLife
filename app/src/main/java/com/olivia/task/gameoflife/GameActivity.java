@@ -4,8 +4,6 @@ import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -45,11 +43,8 @@ public class GameActivity extends Activity implements View.OnTouchListener{
 			if (obj.isGameSaved) {
 
 				gameView.state = obj.gameState;
-				playing = obj.playingState;
 				gameView.deployPins(gameView.state);
 
-				if(playing) buttonPlay.setText("STOP");
-				else buttonPlay.setText("PLAY");
 			}
 		}
 	}
@@ -136,14 +131,8 @@ public class GameActivity extends Activity implements View.OnTouchListener{
 		// save obj to singleton obj. easier than save it to bundle.
 		SavedInstanceObj obj = SavedInstanceObj.getInstance();
 		obj.gameState = gameView.state;
-		obj.playingState = playing;
 		obj.isGameSaved = true;
 
-/*
-		Log.d(TAG, "onSaveInstance - state 00 : " + obj.gameState[0][0].getState());
-		Log.d(TAG, "onSaveInstance - playing state : " + obj.playingState);
-		Log.d(TAG, "onSaveInstance - game saved : " + obj.isGameSaved);
-*/
 	}
 
 	private void lockScreenRotation() {

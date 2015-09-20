@@ -6,8 +6,6 @@ public class SavedInstanceObj {
 
     public static Cell[][] gameState = new Cell[Config.NUMBER_OF_ROW][Config.NUMBER_OF_COLUMN];
 
-    public static boolean playingState;
-
     public static boolean isGameSaved;
 
     public static SavedInstanceObj getInstance(){
